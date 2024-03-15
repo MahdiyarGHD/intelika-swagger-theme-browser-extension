@@ -1,0 +1,68 @@
+body {
+    background: #d5505b;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    margin: 0;
+    height: 150px !important;
+    width: 300px !important;
+    transition: background 0.7s;
+  }
+  
+  body:has(.animated:checked) {
+    background: #3dbf87;
+  }
+  
+  .animated {
+    position: relative;
+    transform: rotate(0);
+    appearance: none;
+    font-size: 0.6em;
+    width: 12em;
+    height: 6em;
+    border-radius: 10em;
+    background: #111;
+    transition: transform 0.7s;
+    mix-blend-mode: multiply;
+    filter: blur(0.5em) contrast(20);
+    box-shadow: 0 0 0 2em #fff;
+    
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 94%;
+      height: 94%;
+      background: radial-gradient(closest-side circle at 25% 50%, #fff 40%, #0000 41%);
+      transform: translate(-50%, -50%) rotate(0deg);
+      transition: transform 0.7s;
+    }
+    
+    &:checked {
+      transform: rotate(180deg);
+      
+      &::before {
+        transform: translate(-50%, -50%) rotate(-360deg);
+      }
+    }
+    
+    &[disabled] {
+      opacity: 0.25;
+    }
+  }
+  
+  @media print {
+    .animated {
+      &, &::before, &::after {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  }
+  
+  @media (prefers-reduced-motion) {
+    html, .animated, .animated::before {
+      transition: none !important;
+    }
+  }

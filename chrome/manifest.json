@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "Intelika Swagger Theme",
+    "description": "An intelika swagger theme implementation for chrome.",
+    "version": "1.0",
+    "background": {
+        "service_worker": "scripts/background.js"
+    },
+    "action": {
+       "default_popup": "default_popup.html",
+       "default_icon": "swagger-icon.png"
+    },
+    "permissions": [
+        "storage", "activeTab", "tabs", "scripting"
+      ],
+      "host_permissions": ["<all_urls>"],
+      "web_accessible_resources": [
+        {
+          "resources": [ "styles/theme.css" ],
+          "matches": [ "<all_urls>" ]
+        }
+    ] 
+}
